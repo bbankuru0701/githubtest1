@@ -1,0 +1,528 @@
+<edmx:Edmx
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+    xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+    xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+    <edmx:Reference
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Uri="./IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema
+            xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="ZPM_GW_EQUIPMENT_SRV" xml:lang="en" sap:schema-version="1">
+            <EntityType Name="ZPM_CV_APP_SETTINGSType" sap:label="App. Settings" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="line_no"/>
+                    <PropertyRef Name="werks"/>
+                </Key>
+                <Property Name="line_no" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase"/>
+                <Property Name="werks" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase"/>
+                <Property Name="appid" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase"/>
+                <Property Name="rule_type" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase"/>
+                <Property Name="rule_value1" Type="Edm.String"/>
+                <Property Name="rule_value2" Type="Edm.String"/>
+                <Property Name="rule_value3" Type="Edm.String"/>
+            </EntityType>
+            <EntityType Name="ZPM_CV_EQUIPMENTType" sap:label="PM Equipment" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="equnr"/>
+                </Key>
+                <Property Name="equnr" Type="Edm.String" Nullable="false" MaxLength="18" sap:display-format="UpperCase" sap:text="eqund" sap:label="Equipment No."/>
+                <Property Name="eqund" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:label="Equipment Number"/>
+                <Property Name="eqktx" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Equipment"/>
+                <Property Name="swerk" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:value-list="fixed-values"/>
+                <Property Name="stat" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:text="sttxt" sap:label="Status" sap:value-list="fixed-values"/>
+                <Property Name="sttxt" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Status"/>
+                <Property Name="eqart" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:text="eartx" sap:label="Object Type" sap:value-list="fixed-values"/>
+                <Property Name="eartx" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Object Type"/>
+                <Property Name="zzmdmequipment_category" Type="Edm.String" MaxLength="50" sap:display-format="UpperCase" sap:label="Equipment Category" sap:value-list="fixed-values"/>
+                <Property Name="eqfnr" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Tag ID / Sort Field"/>
+                <Property Name="erdat_equz" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Valid From"/>
+                <Property Name="datbi" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Valid To"/>
+                <Property Name="tplnr" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Functional Location"/>
+                <Property Name="l2txd" Type="Edm.String" MaxLength="60" sap:display-format="UpperCase" sap:label="Complex"/>
+                <Property Name="l3loc" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:text="fl3txt" sap:label="Unit"/>
+                <Property Name="fl3txt" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Unit"/>
+                <Property Name="l3txd" Type="Edm.String" MaxLength="60" sap:display-format="UpperCase" sap:label="Unit"/>
+                <Property Name="swerx" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Plant"/>
+                <Property Name="swerx2" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Plant"/>
+                <Property Name="tidnr" Type="Edm.String" MaxLength="25" sap:display-format="UpperCase" sap:label="Tech. ID #"/>
+                <Property Name="rbnr" Type="Edm.String" MaxLength="9" sap:display-format="UpperCase" sap:label="Catalog Profile"/>
+                <Property Name="abtxd" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="ABC Indicator"/>
+                <Property Name="kotxd" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Cost Center"/>
+                <Property Name="l4loc" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase"/>
+                <Property Name="spras" Type="Edm.String" MaxLength="2"/>
+                <Property Name="sapurl" Type="Edm.String" MaxLength="255" sap:display-format="UpperCase"/>
+                <Property Name="appid" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase"/>
+                <NavigationProperty Name="to_AppSettings" Relationship="ZPM_GW_EQUIPMENT_SRV.assoc_AF5593663581FD958FA0EE3201410C28" FromRole="FromRole_assoc_AF5593663581FD958FA0EE3201410C28" ToRole="ToRole_assoc_AF5593663581FD958FA0EE3201410C28"/>
+                <NavigationProperty Name="to_Documents" Relationship="ZPM_GW_EQUIPMENT_SRV.assoc_98E30A807DF688E28FD437358F45DCA3" FromRole="FromRole_assoc_98E30A807DF688E28FD437358F45DCA3" ToRole="ToRole_assoc_98E30A807DF688E28FD437358F45DCA3"/>
+                <NavigationProperty Name="to_EquipCategoryHelp" Relationship="ZPM_GW_EQUIPMENT_SRV.assoc_26FD91A78FF968C9782A5FFD32769586" FromRole="FromRole_assoc_26FD91A78FF968C9782A5FFD32769586" ToRole="ToRole_assoc_26FD91A78FF968C9782A5FFD32769586"/>
+                <NavigationProperty Name="to_EquipStatusHelp" Relationship="ZPM_GW_EQUIPMENT_SRV.assoc_50F03FC1EE420F18ACFE01111C88B9A6" FromRole="FromRole_assoc_50F03FC1EE420F18ACFE01111C88B9A6" ToRole="ToRole_assoc_50F03FC1EE420F18ACFE01111C88B9A6"/>
+                <NavigationProperty Name="to_FunctionalLocationHelp" Relationship="ZPM_GW_EQUIPMENT_SRV.assoc_8D2C3B97EB5923EFDAD8EFAC4B081AA3" FromRole="FromRole_assoc_8D2C3B97EB5923EFDAD8EFAC4B081AA3" ToRole="ToRole_assoc_8D2C3B97EB5923EFDAD8EFAC4B081AA3"/>
+                <NavigationProperty Name="to_Links" Relationship="ZPM_GW_EQUIPMENT_SRV.assoc_D7DE9F62AB2FCC2C12DB85972746FC5F" FromRole="FromRole_assoc_D7DE9F62AB2FCC2C12DB85972746FC5F" ToRole="ToRole_assoc_D7DE9F62AB2FCC2C12DB85972746FC5F"/>
+                <NavigationProperty Name="to_Materials" Relationship="ZPM_GW_EQUIPMENT_SRV.assoc_346D2706544D48A962529B92E82D6F2D" FromRole="FromRole_assoc_346D2706544D48A962529B92E82D6F2D" ToRole="ToRole_assoc_346D2706544D48A962529B92E82D6F2D"/>
+                <NavigationProperty Name="to_Notifications" Relationship="ZPM_GW_EQUIPMENT_SRV.assoc_A8042002B70742B383B34EC99AEF7A3A" FromRole="FromRole_assoc_A8042002B70742B383B34EC99AEF7A3A" ToRole="ToRole_assoc_A8042002B70742B383B34EC99AEF7A3A"/>
+                <NavigationProperty Name="to_ObjectTypeHelp" Relationship="ZPM_GW_EQUIPMENT_SRV.assoc_FC990AC8B019D3A94AEE60590A4FF90C" FromRole="FromRole_assoc_FC990AC8B019D3A94AEE60590A4FF90C" ToRole="ToRole_assoc_FC990AC8B019D3A94AEE60590A4FF90C"/>
+                <NavigationProperty Name="to_PlantHelp" Relationship="ZPM_GW_EQUIPMENT_SRV.assoc_6300A2957CB94AA07F4D94CEC615D4D7" FromRole="FromRole_assoc_6300A2957CB94AA07F4D94CEC615D4D7" ToRole="ToRole_assoc_6300A2957CB94AA07F4D94CEC615D4D7"/>
+                <NavigationProperty Name="to_WorkOrders" Relationship="ZPM_GW_EQUIPMENT_SRV.assoc_9219D98FAACFFB96499943898C74FFBF" FromRole="FromRole_assoc_9219D98FAACFFB96499943898C74FFBF" ToRole="ToRole_assoc_9219D98FAACFFB96499943898C74FFBF"/>
+            </EntityType>
+            <EntityType Name="ZPM_CV_EQUIP_DOCSType" sap:label="Linked Documents" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="NODE_ID1"/>
+                </Key>
+                <Property Name="NODE_ID1" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="EQUNR" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase"/>
+                <Property Name="NAME" Type="Edm.String"/>
+                <Property Name="DOC_TYPE" Type="Edm.String"/>
+                <Property Name="MIME_TYPE" Type="Edm.String"/>
+                <Property Name="CREATE_USER" Type="Edm.String"/>
+                <Property Name="COMMENTS" Type="Edm.String"/>
+                <Property Name="OPEN_URL" Type="Edm.String"/>
+                <Property Name="SUB_TYPE" Type="Edm.Int32"/>
+                <Property Name="CREATE_DATE" Type="Edm.Decimal" Precision="15" Scale="0"/>
+            </EntityType>
+            <EntityType Name="ZPM_CV_EQUIP_LINKSType" sap:label="Equipment Links" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="LINE_NO"/>
+                    <PropertyRef Name="NAV_AREA"/>
+                </Key>
+                <Property Name="LINE_NO" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase"/>
+                <Property Name="NAV_AREA" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase"/>
+                <Property Name="EQUNR" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase"/>
+                <Property Name="DISPLAY_TXT" Type="Edm.String"/>
+                <Property Name="URL" Type="Edm.String"/>
+            </EntityType>
+            <EntityType Name="ZPM_CV_EQUIP_STATUSType" sap:label="Value Help Equipment Status" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="istat"/>
+                </Key>
+                <Property Name="istat" Type="Edm.String" Nullable="false" MaxLength="5" sap:display-format="UpperCase" sap:text="txt30" sap:label="Status ID"/>
+                <Property Name="appid" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase"/>
+                <Property Name="txt04" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Status Code"/>
+                <Property Name="txt30" Type="Edm.String" sap:label="Status"/>
+            </EntityType>
+            <EntityType Name="ZPM_CV_MAT_AGGRType" sap:label="Material Used per Equipment" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="equnr"/>
+                    <PropertyRef Name="werks"/>
+                </Key>
+                <Property Name="equnr" Type="Edm.String" Nullable="false" MaxLength="18" sap:display-format="UpperCase" sap:label="Equipment No."/>
+                <Property Name="werks" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Maintenence Plant"/>
+                <Property Name="eqund" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:label="Equipment No."/>
+                <Property Name="grp_txt" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Group"/>
+                <Property Name="mat_cnt" Type="Edm.Int32" sap:label="Materials Used"/>
+                <Property Name="sapurl" Type="Edm.String" MaxLength="255" sap:display-format="UpperCase"/>
+                <NavigationProperty Name="to_MatWhereUsed" Relationship="ZPM_GW_EQUIPMENT_SRV.assoc_590B76C327587551412683C909EF90F6" FromRole="FromRole_assoc_590B76C327587551412683C909EF90F6" ToRole="ToRole_assoc_590B76C327587551412683C909EF90F6"/>
+            </EntityType>
+            <EntityType Name="ZPM_CV_MAT_WHERE_USEDType" sap:label="Material Where Used" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="matnr"/>
+                    <PropertyRef Name="rsnum"/>
+                    <PropertyRef Name="rspos"/>
+                </Key>
+                <Property Name="matnr" Type="Edm.String" Nullable="false" MaxLength="18" sap:display-format="UpperCase" sap:label="Material No."/>
+                <Property Name="rsnum" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase"/>
+                <Property Name="rspos" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase"/>
+                <Property Name="equnr" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase"/>
+                <Property Name="werks" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase"/>
+                <Property Name="matnd" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:label="Material No."/>
+                <Property Name="maktx" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Material Description"/>
+                <Property Name="bdter" Type="Edm.String" MaxLength="8" sap:display-format="UpperCase" sap:label="Requirement Date"/>
+                <Property Name="isbom" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="From BOM" sap:quickinfo="General Flag"/>
+                <Property Name="bdmng" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="meins" sap:label="Quantity"/>
+                <Property Name="meins" Type="Edm.String" MaxLength="3" sap:label="Unit" sap:semantics="unit-of-measure"/>
+                <Property Name="potx1" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Reservation Comments"/>
+                <Property Name="ebeln" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Purchase Order"/>
+                <Property Name="banfn" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Purchase Requisition"/>
+                <Property Name="gpreis" Type="Edm.Decimal" Precision="15" Scale="2" sap:unit="waers" sap:label="Price"/>
+                <Property Name="peinh" Type="Edm.Decimal" Precision="5" Scale="0" sap:label="Price Unit"/>
+                <Property Name="waers" Type="Edm.String" MaxLength="5" sap:label="Currency" sap:semantics="currency-code"/>
+                <Property Name="sapurl" Type="Edm.String" MaxLength="255" sap:display-format="UpperCase"/>
+                <Property Name="bomurl" Type="Edm.String" MaxLength="255" sap:display-format="UpperCase"/>
+                <Property Name="pourl" Type="Edm.String" MaxLength="255" sap:display-format="UpperCase"/>
+                <Property Name="prurl" Type="Edm.String" MaxLength="255" sap:display-format="UpperCase"/>
+            </EntityType>
+            <EntityType Name="ZPM_CV_NOTIFICATIONSType" sap:label="PM Notifications Count by Type" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="notification_type_group"/>
+                    <PropertyRef Name="equipment"/>
+                </Key>
+                <Property Name="notification_type_group" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:label="Notification Type"/>
+                <Property Name="equipment" Type="Edm.String" Nullable="false" MaxLength="18" sap:display-format="UpperCase" sap:label="Equipment Number"/>
+                <Property Name="notificationtypetext" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Notification Type"/>
+                <Property Name="numberofcreatedmaintnotifs" Type="Edm.Int32" sap:label="No. of Notifications"/>
+                <Property Name="numberofactivemaintnotif" Type="Edm.Int32" sap:label="No. of Open Notifications"/>
+                <Property Name="sapurl" Type="Edm.String" MaxLength="200" sap:display-format="UpperCase" sap:label="SAP Transaction"/>
+                <Property Name="notif_type_fltr_l" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase"/>
+                <Property Name="notif_type_fltr_h" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase"/>
+                <Property Name="notif_date_fltr_l" Type="Edm.DateTime" Precision="0" sap:display-format="Date"/>
+                <Property Name="sort" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase"/>
+                <NavigationProperty Name="to_NotificationList" Relationship="ZPM_GW_EQUIPMENT_SRV.assoc_C28B603DB3EBBC4DD2525FE393B70921" FromRole="FromRole_assoc_C28B603DB3EBBC4DD2525FE393B70921" ToRole="ToRole_assoc_C28B603DB3EBBC4DD2525FE393B70921"/>
+            </EntityType>
+            <EntityType Name="ZPM_CV_NOTIF_BY_TYPEType" sap:label="PM Notifications List" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="qmnum"/>
+                </Key>
+                <Property Name="qmnum" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="UpperCase"/>
+                <Property Name="equnr" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase"/>
+                <Property Name="qmnud" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase"/>
+                <Property Name="qmart" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase"/>
+                <Property Name="qmtxt" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase"/>
+                <Property Name="statx" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase"/>
+                <Property Name="stat" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase"/>
+                <Property Name="qmdat" Type="Edm.DateTime" Precision="0" sap:display-format="Date"/>
+                <Property Name="codat" Type="Edm.DateTime" Precision="0" sap:display-format="Date"/>
+                <Property Name="sapurl" Type="Edm.String" MaxLength="255" sap:display-format="UpperCase"/>
+                <Property Name="spras" Type="Edm.String" MaxLength="2"/>
+            </EntityType>
+            <EntityType Name="ZPM_CV_VH_EQUI_CATType" sap:label="Value Help Equipmet Category" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="eqtyp_code"/>
+                </Key>
+                <Property Name="eqtyp_code" Type="Edm.String" Nullable="false" MaxLength="30" sap:display-format="UpperCase" sap:label="Equipment Category ID"/>
+                <Property Name="equip_cat" Type="Edm.String" MaxLength="50" sap:display-format="UpperCase" sap:text="equip_txt" sap:label="Equipment Category" sap:value-list="fixed-values"/>
+                <Property Name="equip_txt" Type="Edm.String" sap:label="Equipment Category Text"/>
+            </EntityType>
+            <EntityType Name="ZPM_CV_VH_FLOCType" sap:label="Value Help Functional Location" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="tplnr"/>
+                </Key>
+                <Property Name="tplnr" Type="Edm.String" Nullable="false" MaxLength="30" sap:display-format="UpperCase" sap:text="fltxt" sap:label="Functional Location ID"/>
+                <Property Name="swerk" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant"/>
+                <Property Name="fllvl" Type="Edm.Byte" sap:label="Level"/>
+                <Property Name="pltxt" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Description"/>
+                <Property Name="fltxt" Type="Edm.String" MaxLength="255" sap:display-format="UpperCase" sap:label="Full Hierarchy"/>
+            </EntityType>
+            <EntityType Name="ZPM_CV_VH_OBJ_TYPEType" sap:label="Value Help Object Type" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="eqart"/>
+                </Key>
+                <Property Name="eqart" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:text="eartx" sap:label="Object Type Code"/>
+                <Property Name="eartx" Type="Edm.String" sap:label="Object Type"/>
+                <Property Name="zzmdmequipment_category" Type="Edm.String" MaxLength="50" sap:display-format="UpperCase" sap:label="Equipment Category"/>
+            </EntityType>
+            <EntityType Name="ZPM_CV_VH_PLANTType" sap:label="Value Help Plant" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="swerk"/>
+                </Key>
+                <Property Name="swerk" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:text="name2" sap:label="Plant Code"/>
+                <Property Name="appid" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase"/>
+                <Property Name="name2" Type="Edm.String" sap:label="Plant"/>
+                <Property Name="name1" Type="Edm.String" sap:label="Plant"/>
+            </EntityType>
+            <EntityType Name="ZPM_CV_WO_AGGRType" sap:label="PM Workorder" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="equnr"/>
+                    <PropertyRef Name="wogrp"/>
+                </Key>
+                <Property Name="equnr" Type="Edm.String" Nullable="false" MaxLength="18" sap:display-format="UpperCase" sap:label="Equipment Number"/>
+                <Property Name="wogrp" Type="Edm.String" Nullable="false" MaxLength="255" sap:display-format="UpperCase" sap:label="Work Order Type"/>
+                <Property Name="autxt" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Work Order Type"/>
+                <Property Name="cntop" Type="Edm.Int32" sap:label="Active Work Orders"/>
+                <Property Name="cntal" Type="Edm.Int32" sap:label="All Work Orders"/>
+                <Property Name="sapurl" Type="Edm.String" MaxLength="200" sap:display-format="UpperCase" sap:label="SAP Transaction"/>
+                <Property Name="spras" Type="Edm.String" MaxLength="2"/>
+                <NavigationProperty Name="to_WorkOrderList" Relationship="ZPM_GW_EQUIPMENT_SRV.assoc_1417F4A0D07E193C22913FEB23C38066" FromRole="FromRole_assoc_1417F4A0D07E193C22913FEB23C38066" ToRole="ToRole_assoc_1417F4A0D07E193C22913FEB23C38066"/>
+            </EntityType>
+            <EntityType Name="ZPM_CV_WO_BY_TYPEType" sap:label="Work Orders" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="aufnr"/>
+                </Key>
+                <Property Name="aufnr" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="UpperCase"/>
+                <Property Name="aufnd" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase"/>
+                <Property Name="ktext" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase"/>
+                <Property Name="wogrp" Type="Edm.String" MaxLength="255" sap:display-format="UpperCase"/>
+                <Property Name="auart" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase"/>
+                <Property Name="priok" Type="Edm.String" MaxLength="1" sap:display-format="NonNegative"/>
+                <Property Name="priokx" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase"/>
+                <Property Name="statx" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase"/>
+                <Property Name="stat" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase"/>
+                <Property Name="gltrp" Type="Edm.DateTime" Precision="0" sap:display-format="Date"/>
+                <Property Name="erdat" Type="Edm.DateTime" Precision="0" sap:display-format="Date"/>
+                <Property Name="gstrs" Type="Edm.DateTime" Precision="0" sap:display-format="Date"/>
+                <Property Name="equnr" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase"/>
+                <Property Name="sapurl" Type="Edm.String" MaxLength="255" sap:display-format="UpperCase"/>
+                <Property Name="cost" Type="Edm.Decimal" Precision="15" Scale="2" sap:unit="cocur"/>
+                <Property Name="cocur" Type="Edm.String" MaxLength="5" sap:semantics="currency-code"/>
+                <Property Name="spras" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase"/>
+            </EntityType>
+            <Association Name="assoc_1417F4A0D07E193C22913FEB23C38066" sap:content-version="1">
+                <End Type="ZPM_GW_EQUIPMENT_SRV.ZPM_CV_WO_AGGRType" Multiplicity="1" Role="FromRole_assoc_1417F4A0D07E193C22913FEB23C38066"/>
+                <End Type="ZPM_GW_EQUIPMENT_SRV.ZPM_CV_WO_BY_TYPEType" Multiplicity="*" Role="ToRole_assoc_1417F4A0D07E193C22913FEB23C38066"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_assoc_1417F4A0D07E193C22913FEB23C38066">
+                        <PropertyRef Name="wogrp"/>
+                        <PropertyRef Name="equnr"/>
+                    </Principal>
+                    <Dependent Role="ToRole_assoc_1417F4A0D07E193C22913FEB23C38066">
+                        <PropertyRef Name="wogrp"/>
+                        <PropertyRef Name="equnr"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_C28B603DB3EBBC4DD2525FE393B70921" sap:content-version="1">
+                <End Type="ZPM_GW_EQUIPMENT_SRV.ZPM_CV_NOTIFICATIONSType" Multiplicity="1" Role="FromRole_assoc_C28B603DB3EBBC4DD2525FE393B70921"/>
+                <End Type="ZPM_GW_EQUIPMENT_SRV.ZPM_CV_NOTIF_BY_TYPEType" Multiplicity="*" Role="ToRole_assoc_C28B603DB3EBBC4DD2525FE393B70921"/>
+            </Association>
+            <Association Name="assoc_98E30A807DF688E28FD437358F45DCA3" sap:content-version="1">
+                <End Type="ZPM_GW_EQUIPMENT_SRV.ZPM_CV_EQUIPMENTType" Multiplicity="1" Role="FromRole_assoc_98E30A807DF688E28FD437358F45DCA3"/>
+                <End Type="ZPM_GW_EQUIPMENT_SRV.ZPM_CV_EQUIP_DOCSType" Multiplicity="*" Role="ToRole_assoc_98E30A807DF688E28FD437358F45DCA3"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_assoc_98E30A807DF688E28FD437358F45DCA3">
+                        <PropertyRef Name="equnr"/>
+                    </Principal>
+                    <Dependent Role="ToRole_assoc_98E30A807DF688E28FD437358F45DCA3">
+                        <PropertyRef Name="EQUNR"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_26FD91A78FF968C9782A5FFD32769586" sap:content-version="1">
+                <End Type="ZPM_GW_EQUIPMENT_SRV.ZPM_CV_EQUIPMENTType" Multiplicity="1" Role="FromRole_assoc_26FD91A78FF968C9782A5FFD32769586"/>
+                <End Type="ZPM_GW_EQUIPMENT_SRV.ZPM_CV_VH_EQUI_CATType" Multiplicity="*" Role="ToRole_assoc_26FD91A78FF968C9782A5FFD32769586"/>
+            </Association>
+            <Association Name="assoc_50F03FC1EE420F18ACFE01111C88B9A6" sap:content-version="1">
+                <End Type="ZPM_GW_EQUIPMENT_SRV.ZPM_CV_EQUIPMENTType" Multiplicity="1" Role="FromRole_assoc_50F03FC1EE420F18ACFE01111C88B9A6"/>
+                <End Type="ZPM_GW_EQUIPMENT_SRV.ZPM_CV_EQUIP_STATUSType" Multiplicity="*" Role="ToRole_assoc_50F03FC1EE420F18ACFE01111C88B9A6"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_assoc_50F03FC1EE420F18ACFE01111C88B9A6">
+                        <PropertyRef Name="istat"/>
+                    </Principal>
+                    <Dependent Role="FromRole_assoc_50F03FC1EE420F18ACFE01111C88B9A6">
+                        <PropertyRef Name="stat"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_8D2C3B97EB5923EFDAD8EFAC4B081AA3" sap:content-version="1">
+                <End Type="ZPM_GW_EQUIPMENT_SRV.ZPM_CV_EQUIPMENTType" Multiplicity="1" Role="FromRole_assoc_8D2C3B97EB5923EFDAD8EFAC4B081AA3"/>
+                <End Type="ZPM_GW_EQUIPMENT_SRV.ZPM_CV_VH_FLOCType" Multiplicity="*" Role="ToRole_assoc_8D2C3B97EB5923EFDAD8EFAC4B081AA3"/>
+            </Association>
+            <Association Name="assoc_D7DE9F62AB2FCC2C12DB85972746FC5F" sap:content-version="1">
+                <End Type="ZPM_GW_EQUIPMENT_SRV.ZPM_CV_EQUIPMENTType" Multiplicity="1" Role="FromRole_assoc_D7DE9F62AB2FCC2C12DB85972746FC5F"/>
+                <End Type="ZPM_GW_EQUIPMENT_SRV.ZPM_CV_EQUIP_LINKSType" Multiplicity="*" Role="ToRole_assoc_D7DE9F62AB2FCC2C12DB85972746FC5F"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_assoc_D7DE9F62AB2FCC2C12DB85972746FC5F">
+                        <PropertyRef Name="equnr"/>
+                    </Principal>
+                    <Dependent Role="ToRole_assoc_D7DE9F62AB2FCC2C12DB85972746FC5F">
+                        <PropertyRef Name="EQUNR"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_346D2706544D48A962529B92E82D6F2D" sap:content-version="1">
+                <End Type="ZPM_GW_EQUIPMENT_SRV.ZPM_CV_EQUIPMENTType" Multiplicity="1" Role="FromRole_assoc_346D2706544D48A962529B92E82D6F2D"/>
+                <End Type="ZPM_GW_EQUIPMENT_SRV.ZPM_CV_MAT_AGGRType" Multiplicity="*" Role="ToRole_assoc_346D2706544D48A962529B92E82D6F2D"/>
+            </Association>
+            <Association Name="assoc_A8042002B70742B383B34EC99AEF7A3A" sap:content-version="1">
+                <End Type="ZPM_GW_EQUIPMENT_SRV.ZPM_CV_EQUIPMENTType" Multiplicity="1" Role="FromRole_assoc_A8042002B70742B383B34EC99AEF7A3A"/>
+                <End Type="ZPM_GW_EQUIPMENT_SRV.ZPM_CV_NOTIFICATIONSType" Multiplicity="*" Role="ToRole_assoc_A8042002B70742B383B34EC99AEF7A3A"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_assoc_A8042002B70742B383B34EC99AEF7A3A">
+                        <PropertyRef Name="equnr"/>
+                    </Principal>
+                    <Dependent Role="ToRole_assoc_A8042002B70742B383B34EC99AEF7A3A">
+                        <PropertyRef Name="equipment"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_FC990AC8B019D3A94AEE60590A4FF90C" sap:content-version="1">
+                <End Type="ZPM_GW_EQUIPMENT_SRV.ZPM_CV_EQUIPMENTType" Multiplicity="1" Role="FromRole_assoc_FC990AC8B019D3A94AEE60590A4FF90C"/>
+                <End Type="ZPM_GW_EQUIPMENT_SRV.ZPM_CV_VH_OBJ_TYPEType" Multiplicity="*" Role="ToRole_assoc_FC990AC8B019D3A94AEE60590A4FF90C"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_assoc_FC990AC8B019D3A94AEE60590A4FF90C">
+                        <PropertyRef Name="eqart"/>
+                    </Principal>
+                    <Dependent Role="FromRole_assoc_FC990AC8B019D3A94AEE60590A4FF90C">
+                        <PropertyRef Name="eqart"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_6300A2957CB94AA07F4D94CEC615D4D7" sap:content-version="1">
+                <End Type="ZPM_GW_EQUIPMENT_SRV.ZPM_CV_EQUIPMENTType" Multiplicity="1" Role="FromRole_assoc_6300A2957CB94AA07F4D94CEC615D4D7"/>
+                <End Type="ZPM_GW_EQUIPMENT_SRV.ZPM_CV_VH_PLANTType" Multiplicity="*" Role="ToRole_assoc_6300A2957CB94AA07F4D94CEC615D4D7"/>
+            </Association>
+            <Association Name="assoc_9219D98FAACFFB96499943898C74FFBF" sap:content-version="1">
+                <End Type="ZPM_GW_EQUIPMENT_SRV.ZPM_CV_EQUIPMENTType" Multiplicity="1" Role="FromRole_assoc_9219D98FAACFFB96499943898C74FFBF"/>
+                <End Type="ZPM_GW_EQUIPMENT_SRV.ZPM_CV_WO_AGGRType" Multiplicity="*" Role="ToRole_assoc_9219D98FAACFFB96499943898C74FFBF"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_assoc_9219D98FAACFFB96499943898C74FFBF">
+                        <PropertyRef Name="equnr"/>
+                    </Principal>
+                    <Dependent Role="ToRole_assoc_9219D98FAACFFB96499943898C74FFBF">
+                        <PropertyRef Name="equnr"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_AF5593663581FD958FA0EE3201410C28" sap:content-version="1">
+                <End Type="ZPM_GW_EQUIPMENT_SRV.ZPM_CV_EQUIPMENTType" Multiplicity="1" Role="FromRole_assoc_AF5593663581FD958FA0EE3201410C28"/>
+                <End Type="ZPM_GW_EQUIPMENT_SRV.ZPM_CV_APP_SETTINGSType" Multiplicity="*" Role="ToRole_assoc_AF5593663581FD958FA0EE3201410C28"/>
+            </Association>
+            <Association Name="assoc_590B76C327587551412683C909EF90F6" sap:content-version="1">
+                <End Type="ZPM_GW_EQUIPMENT_SRV.ZPM_CV_MAT_AGGRType" Multiplicity="1" Role="FromRole_assoc_590B76C327587551412683C909EF90F6"/>
+                <End Type="ZPM_GW_EQUIPMENT_SRV.ZPM_CV_MAT_WHERE_USEDType" Multiplicity="*" Role="ToRole_assoc_590B76C327587551412683C909EF90F6"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_assoc_590B76C327587551412683C909EF90F6">
+                        <PropertyRef Name="werks"/>
+                        <PropertyRef Name="equnr"/>
+                    </Principal>
+                    <Dependent Role="ToRole_assoc_590B76C327587551412683C909EF90F6">
+                        <PropertyRef Name="werks"/>
+                        <PropertyRef Name="equnr"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="ZPM_GW_EQUIPMENT_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="ZPM_CV_APP_SETTINGS" EntityType="ZPM_GW_EQUIPMENT_SRV.ZPM_CV_APP_SETTINGSType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZPM_CV_EQUIPMENT" EntityType="ZPM_GW_EQUIPMENT_SRV.ZPM_CV_EQUIPMENTType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1" sap:semantics="fixed-values"/>
+                <EntitySet Name="ZPM_CV_EQUIP_DOCS" EntityType="ZPM_GW_EQUIPMENT_SRV.ZPM_CV_EQUIP_DOCSType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZPM_CV_EQUIP_LINKS" EntityType="ZPM_GW_EQUIPMENT_SRV.ZPM_CV_EQUIP_LINKSType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZPM_CV_EQUIP_STATUS" EntityType="ZPM_GW_EQUIPMENT_SRV.ZPM_CV_EQUIP_STATUSType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZPM_CV_MAT_AGGR" EntityType="ZPM_GW_EQUIPMENT_SRV.ZPM_CV_MAT_AGGRType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZPM_CV_MAT_WHERE_USED" EntityType="ZPM_GW_EQUIPMENT_SRV.ZPM_CV_MAT_WHERE_USEDType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZPM_CV_NOTIFICATIONS" EntityType="ZPM_GW_EQUIPMENT_SRV.ZPM_CV_NOTIFICATIONSType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZPM_CV_NOTIF_BY_TYPE" EntityType="ZPM_GW_EQUIPMENT_SRV.ZPM_CV_NOTIF_BY_TYPEType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZPM_CV_VH_EQUI_CAT" EntityType="ZPM_GW_EQUIPMENT_SRV.ZPM_CV_VH_EQUI_CATType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZPM_CV_VH_FLOC" EntityType="ZPM_GW_EQUIPMENT_SRV.ZPM_CV_VH_FLOCType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZPM_CV_VH_OBJ_TYPE" EntityType="ZPM_GW_EQUIPMENT_SRV.ZPM_CV_VH_OBJ_TYPEType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZPM_CV_VH_PLANT" EntityType="ZPM_GW_EQUIPMENT_SRV.ZPM_CV_VH_PLANTType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZPM_CV_WO_AGGR" EntityType="ZPM_GW_EQUIPMENT_SRV.ZPM_CV_WO_AGGRType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZPM_CV_WO_BY_TYPE" EntityType="ZPM_GW_EQUIPMENT_SRV.ZPM_CV_WO_BY_TYPEType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <AssociationSet Name="assoc_50F03FC1EE420F18ACFE01111C88B9A6" Association="ZPM_GW_EQUIPMENT_SRV.assoc_50F03FC1EE420F18ACFE01111C88B9A6" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZPM_CV_EQUIPMENT" Role="FromRole_assoc_50F03FC1EE420F18ACFE01111C88B9A6"/>
+                    <End EntitySet="ZPM_CV_EQUIP_STATUS" Role="ToRole_assoc_50F03FC1EE420F18ACFE01111C88B9A6"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_9219D98FAACFFB96499943898C74FFBF" Association="ZPM_GW_EQUIPMENT_SRV.assoc_9219D98FAACFFB96499943898C74FFBF" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZPM_CV_EQUIPMENT" Role="FromRole_assoc_9219D98FAACFFB96499943898C74FFBF"/>
+                    <End EntitySet="ZPM_CV_WO_AGGR" Role="ToRole_assoc_9219D98FAACFFB96499943898C74FFBF"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_AF5593663581FD958FA0EE3201410C28" Association="ZPM_GW_EQUIPMENT_SRV.assoc_AF5593663581FD958FA0EE3201410C28" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZPM_CV_EQUIPMENT" Role="FromRole_assoc_AF5593663581FD958FA0EE3201410C28"/>
+                    <End EntitySet="ZPM_CV_APP_SETTINGS" Role="ToRole_assoc_AF5593663581FD958FA0EE3201410C28"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_6300A2957CB94AA07F4D94CEC615D4D7" Association="ZPM_GW_EQUIPMENT_SRV.assoc_6300A2957CB94AA07F4D94CEC615D4D7" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZPM_CV_EQUIPMENT" Role="FromRole_assoc_6300A2957CB94AA07F4D94CEC615D4D7"/>
+                    <End EntitySet="ZPM_CV_VH_PLANT" Role="ToRole_assoc_6300A2957CB94AA07F4D94CEC615D4D7"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_FC990AC8B019D3A94AEE60590A4FF90C" Association="ZPM_GW_EQUIPMENT_SRV.assoc_FC990AC8B019D3A94AEE60590A4FF90C" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZPM_CV_EQUIPMENT" Role="FromRole_assoc_FC990AC8B019D3A94AEE60590A4FF90C"/>
+                    <End EntitySet="ZPM_CV_VH_OBJ_TYPE" Role="ToRole_assoc_FC990AC8B019D3A94AEE60590A4FF90C"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_C28B603DB3EBBC4DD2525FE393B70921" Association="ZPM_GW_EQUIPMENT_SRV.assoc_C28B603DB3EBBC4DD2525FE393B70921" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZPM_CV_NOTIFICATIONS" Role="FromRole_assoc_C28B603DB3EBBC4DD2525FE393B70921"/>
+                    <End EntitySet="ZPM_CV_NOTIF_BY_TYPE" Role="ToRole_assoc_C28B603DB3EBBC4DD2525FE393B70921"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_8D2C3B97EB5923EFDAD8EFAC4B081AA3" Association="ZPM_GW_EQUIPMENT_SRV.assoc_8D2C3B97EB5923EFDAD8EFAC4B081AA3" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZPM_CV_EQUIPMENT" Role="FromRole_assoc_8D2C3B97EB5923EFDAD8EFAC4B081AA3"/>
+                    <End EntitySet="ZPM_CV_VH_FLOC" Role="ToRole_assoc_8D2C3B97EB5923EFDAD8EFAC4B081AA3"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_346D2706544D48A962529B92E82D6F2D" Association="ZPM_GW_EQUIPMENT_SRV.assoc_346D2706544D48A962529B92E82D6F2D" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZPM_CV_EQUIPMENT" Role="FromRole_assoc_346D2706544D48A962529B92E82D6F2D"/>
+                    <End EntitySet="ZPM_CV_MAT_AGGR" Role="ToRole_assoc_346D2706544D48A962529B92E82D6F2D"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_590B76C327587551412683C909EF90F6" Association="ZPM_GW_EQUIPMENT_SRV.assoc_590B76C327587551412683C909EF90F6" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZPM_CV_MAT_AGGR" Role="FromRole_assoc_590B76C327587551412683C909EF90F6"/>
+                    <End EntitySet="ZPM_CV_MAT_WHERE_USED" Role="ToRole_assoc_590B76C327587551412683C909EF90F6"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_D7DE9F62AB2FCC2C12DB85972746FC5F" Association="ZPM_GW_EQUIPMENT_SRV.assoc_D7DE9F62AB2FCC2C12DB85972746FC5F" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZPM_CV_EQUIPMENT" Role="FromRole_assoc_D7DE9F62AB2FCC2C12DB85972746FC5F"/>
+                    <End EntitySet="ZPM_CV_EQUIP_LINKS" Role="ToRole_assoc_D7DE9F62AB2FCC2C12DB85972746FC5F"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_1417F4A0D07E193C22913FEB23C38066" Association="ZPM_GW_EQUIPMENT_SRV.assoc_1417F4A0D07E193C22913FEB23C38066" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZPM_CV_WO_AGGR" Role="FromRole_assoc_1417F4A0D07E193C22913FEB23C38066"/>
+                    <End EntitySet="ZPM_CV_WO_BY_TYPE" Role="ToRole_assoc_1417F4A0D07E193C22913FEB23C38066"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_A8042002B70742B383B34EC99AEF7A3A" Association="ZPM_GW_EQUIPMENT_SRV.assoc_A8042002B70742B383B34EC99AEF7A3A" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZPM_CV_EQUIPMENT" Role="FromRole_assoc_A8042002B70742B383B34EC99AEF7A3A"/>
+                    <End EntitySet="ZPM_CV_NOTIFICATIONS" Role="ToRole_assoc_A8042002B70742B383B34EC99AEF7A3A"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_98E30A807DF688E28FD437358F45DCA3" Association="ZPM_GW_EQUIPMENT_SRV.assoc_98E30A807DF688E28FD437358F45DCA3" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZPM_CV_EQUIPMENT" Role="FromRole_assoc_98E30A807DF688E28FD437358F45DCA3"/>
+                    <End EntitySet="ZPM_CV_EQUIP_DOCS" Role="ToRole_assoc_98E30A807DF688E28FD437358F45DCA3"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_26FD91A78FF968C9782A5FFD32769586" Association="ZPM_GW_EQUIPMENT_SRV.assoc_26FD91A78FF968C9782A5FFD32769586" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZPM_CV_EQUIPMENT" Role="FromRole_assoc_26FD91A78FF968C9782A5FFD32769586"/>
+                    <End EntitySet="ZPM_CV_VH_EQUI_CAT" Role="ToRole_assoc_26FD91A78FF968C9782A5FFD32769586"/>
+                </AssociationSet>
+            </EntityContainer>
+            <Annotations
+                xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZPM_GW_EQUIPMENT_SRV.ZPM_CV_EQUIPMENTType/stat">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Value Help Equipment Status"/>
+                        <PropertyValue Property="CollectionPath" String="ZPM_CV_EQUIP_STATUS"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="stat"/>
+                                    <PropertyValue Property="ValueListProperty" String="istat"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="appid"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="txt04"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="txt30"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations
+                xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZPM_GW_EQUIPMENT_SRV.ZPM_CV_EQUIPMENTType/eqart">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Value Help Object Type"/>
+                        <PropertyValue Property="CollectionPath" String="ZPM_CV_VH_OBJ_TYPE"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="eqart"/>
+                                    <PropertyValue Property="ValueListProperty" String="eqart"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="eartx"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="zzmdmequipment_category"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations
+                xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZPM_GW_EQUIPMENT_SRV.ZPM_CV_EQUIPMENTType/zzmdmequipment_category">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Value Help Equipmet Category"/>
+                        <PropertyValue Property="CollectionPath" String="ZPM_CV_VH_EQUI_CAT"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="zzmdmequipment_category"/>
+                                    <PropertyValue Property="ValueListProperty" String="equip_cat"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="eqtyp_code"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="equip_txt"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <atom:link
+                xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="./sap/ZPM_GW_EQUIPMENT_SRV/$metadata"/>
+                <atom:link
+                    xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="./sap/ZPM_GW_EQUIPMENT_SRV/$metadata"/>
+                </Schema>
+            </edmx:DataServices>
+        </edmx:Edmx>
